@@ -2,90 +2,23 @@
   <h1> 𝐰𝐡𝐨𝐚𝐦𝐢  </h1>
   <p> {{site.user_description}} </p>
 </div>
-
-<div class="user">
-  <!-- Certification Slider -->
-  <div class="slider-container">
-    <div class="slides">
-      <!-- Certification CEH V12 -->
-      <div class="slide">
-        <img src="C:/Users/ranja/Downloads/img.jpg" alt="CEH V12" class="certification-logo">
-        <p class="certification-title">CEH V12</p>
-      </div>
-
-      <!-- Certification eJPT -->
-      <div class="slide">
-        <img src="C:/Users/ranja/Downloads/img.jpg" alt="eJPT" class="certification-logo">
-        <p class="certification-title">eJPT</p>
-      </div>
-
-      <!-- Certification eCPPTV2 -->
-      <div class="slide">
-        <img src="C:/Users/ranja/Downloads/img.jpg" alt="eCPPTV2" class="certification-logo">
-        <p class="certification-title">eCPPTV2</p>
-      </div>
-
-      <!-- Certification eWPTXV2 -->
-      <div class="slide">
-        <img src="C:/Users/ranja/Downloads/img.jpg" alt="eWPTXV2" class="certification-logo">
-        <p class="certification-title">eWPTXV2</p>
-      </div>
-
-      <!-- Certification DANTE -->
-      <div class="slide">
-        <img src="C:/Users/ranja/Downloads/img.jpg" alt="DANTE" class="certification-logo">
-        <p class="certification-title">DANTE</p>
-      </div>
+    <div class="tech">
+      <h2>𝐶𝑒𝑟𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛𝑠</h2>
+      <p>CEH V12</p>
+      <p>eJPT</p>
+      <p>eCPPTV2</p>
+      <p>eWPTXV2</p>
+      <p>DANTE</p>
     </div>
-
-    <div class="controls">
-      <button class="control-btn" onclick="prevSlide()">❮</button>
-      <button class="control-btn" onclick="nextSlide()">❯</button>
+    <div class="tech">
+      <h2>Code</h2>
+      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
+        Vinyl XOXO lumbersexual</p>
     </div>
-  </div>
-
-  <!-- Other Sections -->
-  <div class="tech">
-    <h2>𝐶𝑒𝑟𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛𝑠</h2>
-    <p>CEH V12</p>
-    <p>eJPT</p>
-    <p>eCPPTV2</p>
-    <p>eWPTXV2</p>
-    <p>DANTE</p>
-  </div>
-
-  <div class="tech">
-    <h2>Code</h2>
-    <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-      Vinyl XOXO lumbersexual</p>
-  </div>
-
-  <div class="tech">
-    <h2>Tools</h2>
-    <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-      Vinyl XOXO lumbersexual</p>
-  </div>
+    <div class="tech">
+      <h2>Tools</h2>
+      
+      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
+        Vinyl XOXO lumbersexual</p>
+    </div>
 </div>
-
-<script>
-  let currentSlide = 0;
-
-  function showSlide(index) {
-    const slides = document.querySelector('.slides');
-    const slideWidth = document.querySelector('.slide').offsetWidth;
-
-    currentSlide = index;
-    slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-  }
-
-  function prevSlide() {
-    currentSlide = Math.max(currentSlide - 1, 0);
-    showSlide(currentSlide);
-  }
-
-  function nextSlide() {
-    const totalSlides = document.querySelectorAll('.slide').length;
-    currentSlide = Math.min(currentSlide + 1, totalSlides - 1);
-    showSlide(currentSlide);
-  }
-</script>
