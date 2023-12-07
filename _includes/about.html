@@ -4,44 +4,109 @@
 </div>
   <div class="user">
     <div class="tech">
-          <h2>𝐶𝑒𝑟𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛𝑠</h2>
-          <div class="swiper-container">
-            <div class="swiper-wrapper">
-              <!-- Certification 1 -->
-              <div class="swiper-slide">
-                <img src="path/to/certification1-logo.png" alt="Certification 1 Logo" class="certification-logo">
-                <p class="certification-title">CEH V12</p>
-              </div>
+      <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll-Driven Carousel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .carousel-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100vw;
+      height: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .certification-logo {
+      width: 60%; /* Adjust the width as needed */
+      height: auto;
+    }
+
+    .certification-title {
+      text-align: center;
+      font-size: 18px; /* Adjust the font size as needed */
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carousel-container" onscroll="handleScroll(event)">
+    <!-- Certification 1 -->
+    <div class="carousel-slide">
+      <img src="path/to/certification1-logo.png" alt="Certification 1 Logo" class="certification-logo">
+      <p class="certification-title">CEH V12</p>
+    </div>
+
+    <!-- Certification 2 -->
+    <div class="carousel-slide">
+      <img src="path/to/certification2-logo.png" alt="Certification 2 Logo" class="certification-logo">
+      <p class="certification-title">eJPT</p>
+    </div>
+
+    <!-- Add more certifications as needed -->
+
+  </div>
+
+  <script>
+    function handleScroll(event) {
+      const scrollPosition = event.target.scrollLeft;
+      const slides = document.querySelectorAll('.carousel-slide');
+
+      // Calculate the index of the active slide based on scroll position
+      const activeIndex = Math.round(scrollPosition / window.innerWidth);
+
+      // Apply animations or styles to the active slide
+      slides.forEach((slide, index) => {
+        if (index === activeIndex) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
+
+      <h2>𝐶𝑒𝑟𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛𝑠</h2>
+      <p>CEH V12</p>
+      <p>eJPT</p>
+      <p>eCPPTV2</p>
+      <p>eWPTXV2</p>
+      <p>DANTE</p>
+    </div>
+    <div class="tech">
+      <h2>Code</h2>
+      <
+      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
+        Vinyl XOXO lumbersexual</p>
+    </div>
+    <div class="tech">
+      <h2>Tools</h2>
       
-              <!-- Certification 2 -->
-              <div class="swiper-slide">
-                <img src="path/to/certification2-logo.png" alt="Certification 2 Logo" class="certification-logo">
-                <p class="certification-title">eJPT</p>
-              </div>
-      
-              <!-- Add more certifications as needed -->
-      
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      
-        <!-- Your other tech sections go here -->
-      </div>
-      
-      <!-- Add Swiper JS library -->
-      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-      
-      <!-- Initialize Swiper -->
-      <script>
-        var swiper = new Swiper('.swiper-container', {
-          slidesPerView: 1,
-          spaceBetween: 10,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: false,
-          },
-        });
-      </script>
-      
+      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
+        Vinyl XOXO lumbersexual</p>
+    </div>
+</div>
