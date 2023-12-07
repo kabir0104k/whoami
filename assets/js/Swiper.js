@@ -3,8 +3,9 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <style>
     .swiper-container {
-      width: 100%;
-      height: 100%;
+      width: 80%; /* Adjust the width as needed */
+      max-width: 400px; /* Set a max-width for responsiveness */
+      margin: auto;
     }
 
     .swiper-slide {
@@ -16,13 +17,13 @@
     }
 
     .certification-logo {
-      width: 100px; /* Adjust the width as needed */
+      width: 60px; /* Adjust the width as needed */
       height: auto;
       margin-bottom: 10px;
     }
 
     .certification-title {
-      font-size: 18px; /* Adjust the font size as needed */
+      font-size: 14px; /* Adjust the font size as needed */
       font-weight: bold;
     }
   </style>
