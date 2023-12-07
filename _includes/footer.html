@@ -1,11 +1,16 @@
-<footer class="footer">
-    <p>{{Ranjan Kumar}}</p>
-    <p><span class="love"></span><a href="https://github.com/Kabir0104k"> </a></p>
-</footer>
-<script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="{{ "/assets/js/sweet-scroll.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/assets/js/main.js" | prepend: site.baseurl }}"></script>
-{% include google-analytics.html %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Your head content goes here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <!-- Add any additional stylesheets, scripts, or meta tags as needed -->
+
+    <!-- Kaspersky Cyber Map widget CSS -->
+    <link rel="stylesheet" href="https://cybermap.kaspersky.com/en/widget/dynamic/dark/main.css">
+</head>
 
 <body>
     <!-- Your website content goes here -->
@@ -17,4 +22,14 @@
 
     <!-- Your scripts or additional content -->
 
+    <!-- Particle.js library -->
+    <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Sweet Scroll library -->
+    <script src="{{ "/assets/js/sweet-scroll.min.js" | prepend: site.baseurl }}"></script>
+    <!-- Your main script -->
+    <script src="{{ "/assets/js/main.js" | prepend: site.baseurl }}"></script>
+    <!-- Google Analytics -->
+    {% include google-analytics.html %}
 </body>
+
+</html>
