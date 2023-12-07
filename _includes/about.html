@@ -2,23 +2,147 @@
   <h1> 𝐰𝐡𝐨𝐚𝐦𝐢  </h1>
   <p> {{site.user_description}} </p>
 </div>
-    <div class="tech">
-      <h2>𝐶𝑒𝑟𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛𝑠</h2>
-      <p>CEH V12</p>
-      <p>eJPT</p>
-      <p>eCPPTV2</p>
-      <p>eWPTXV2</p>
-      <p>DANTE</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neumorphic Certifications Slider</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #ecf0f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 80vw;
+      max-width: 600px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #ecf0f3;
+      box-shadow: inset 10px 10px 20px #d1d9e6, inset -10px -10px 20px #ffffff;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      text-align: center;
+      background: #ecf0f3;
+      border-radius: 20px;
+      margin: 10px;
+      box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff;
+    }
+
+    .certification-logo {
+      width: 100%; /* Adjust the width as needed */
+      height: auto;
+      max-width: 400px; /* Max width to prevent overflow */
+      max-height: 290px; /* Max height to prevent overflow */
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+    }
+
+    .certification-title {
+      font-size: 16px; /* Adjust the font size as needed */
+      font-weight: bold;
+    }
+
+    .controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .control-btn {
+      cursor: pointer;
+      background: #ecf0f3;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-container">
+    <div class="slides">
+
+      <!-- Certification CEH V12 -->
+      <div class="slide">
+        <img src="\Users\ranja\Downloads\IMG.JPG" alt="CEH V12 Logo" class="certification-logo">
+        <p class="certification-title">CEH V12</p>
+      </div>
+
+      <!-- Certification eJPT -->
+      <div class="slide">
+        <img src="\Users\ranja\Downloads\IMG.JPG" alt="eJPT Logo" class="certification-logo">
+        <p class="certification-title">eJPT</p>
+      </div>
+
+      <!-- Certification eCPPTV2 -->
+      <div class="slide">
+        <img src="\Users\ranja\Downloads\IMG.JPG" alt="eCPPTV2 Logo" class="certification-logo">
+        <p class="certification-title">eCPPTV2</p>
+      </div>
+
+      <!-- Certification eWPTXV2 -->
+      <div class="slide">
+        <img src="\Users\ranja\Downloads\IMG.JPG" alt="eWPTXV2 Logo" class="certification-logo">
+        <p class="certification-title">eWPTXV2</p>
+      </div>
+
+      <!-- Certification DANTE -->
+      <div class="slide">
+        <img src="\Users\ranja\Downloads\IMG.JPG" alt="DANTE Logo" class="certification-logo">
+        <p class="certification-title">DANTE</p>
+      </div>
     </div>
-    <div class="tech">
-      <h2>Code</h2>
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
+
+    <div class="controls">
+      <button class="control-btn" onclick="prevSlide()">❮</button>
+      <button class="control-btn" onclick="nextSlide()">❯</button>
     </div>
-    <div class="tech">
-      <h2>Tools</h2>
-      
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
-    </div>
-</div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      const slides = document.querySelector('.slides');
+      const slideWidth = document.querySelector('.slide').offsetWidth;
+
+      currentSlide = index;
+      slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
+
+    function prevSlide() {
+      currentSlide = Math.max(currentSlide - 1, 0);
+      showSlide(currentSlide);
+    }
+
+    function nextSlide() {
+      const totalSlides = document.querySelectorAll('.slide').length;
+      currentSlide = Math.min(currentSlide + 1, totalSlides - 1);
+      showSlide(currentSlide);
+    }
+  </script>
+</body>
+
+</html>
