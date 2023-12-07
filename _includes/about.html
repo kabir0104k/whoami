@@ -4,20 +4,44 @@
 </div>
   <div class="user">
     <div class="tech">
-      <h2>𝐶𝑒𝑟𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛𝑠</h2>
-      <p>CEH V12</p>
-
-    </div>
-    <div class="tech">
-      <h2>Code</h2>
-      <
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
-    </div>
-    <div class="tech">
-      <h2>Tools</h2>
+          <h2>𝐶𝑒𝑟𝑡𝑖𝑓𝑖𝑐𝑎𝑡𝑖𝑜𝑛𝑠</h2>
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <!-- Certification 1 -->
+              <div class="swiper-slide">
+                <img src="path/to/certification1-logo.png" alt="Certification 1 Logo" class="certification-logo">
+                <p class="certification-title">CEH V12</p>
+              </div>
       
-      <p>Mumblecore hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
-    </div>
-</div>
+              <!-- Certification 2 -->
+              <div class="swiper-slide">
+                <img src="path/to/certification2-logo.png" alt="Certification 2 Logo" class="certification-logo">
+                <p class="certification-title">eJPT</p>
+              </div>
+      
+              <!-- Add more certifications as needed -->
+      
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      
+        <!-- Your other tech sections go here -->
+      </div>
+      
+      <!-- Add Swiper JS library -->
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+      
+      <!-- Initialize Swiper -->
+      <script>
+        var swiper = new Swiper('.swiper-container', {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+        });
+      </script>
+      
