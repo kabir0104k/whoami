@@ -468,4 +468,22 @@
       transform: translate(calc(var(--distance) * -1vw), 0);
     }
   }
+  .footer {
+    width: 74px;
+    height: 1260px;
+    overflow: hidden;
+  }
+  
+  .title,
+  .backdrop,
+  .truck {
+    transform-origin: top left;
+  }
+  
+  /* Adjustments for the content within the footer */
+  .title {
+    font-size: 12px;
+  }
+  
+  /* Add other necessary adjustments based on your needs */
   
