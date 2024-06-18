@@ -1,33 +1,332 @@
-<div class="user-details">
-  <h1> 𝐰𝐡𝐨𝐚𝐦𝐢 </h1>
-  <p> {{site.user_description}} </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Vulnerability Tracker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-  <div class="user">
-    <div class="tech">
-      <h2>Test 1</h2>
-      <i class="devicon-html5-plain-wordmark"></i>
-      <i class="devicon-bootstrap-plain-wordmark colored"></i>
-      <i class="devicon-sass-original colored"></i>
-      <p>Ranjan Test 1 hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
-      </div>
-
-
-      
-    <div class="tech">
-      <h2>Test 2</h2>
-      <i class="devicon-javascript-plain colored"></i>
-      <i class="devicon-react-original-wordmark colored"></i>
-      <i class="devicon-nodejs-plain-wordmark"></i>
-      <p>Ranjan Test 2 hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
+        body {
+            background: #000000;
+            color: #e0e0e0;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #00ff99;
+            text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 40px #00ff99;
+        }
+        .container {
+            background: #000000;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.2);
+            padding: 20px;
+            max-width: 8000px;
+            width: 90%;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        .progress-container {
+            width: 100%;
+            background: #3a4449;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            height: 9px;
+        }
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #00ff15, #00ff15);
+            transition: width 0.3s;
+            box-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        li:hover {
+            background: #333;
+        }
+        label {
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 0px;
+            cursor: pointer;
+        }
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #22ff00;
+        }
+        .progress-percent {
+            margin-top: 10px;
+            font-size: 1em;
+            color: #11ff00;
+        }
+        .category {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ff0000;
+            text-shadow: 0 0 10px #000000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Vulnerability Tracker</h1>
+    <div class="container">
+        <!-- Overall Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="overall-progress-bar"></div>
+        </div>
+        <div class="progress-percent" id="overall-progress-percent">0%</div>
+        
+        <ul id="vuln-list">
+            <!-- Vulnerabilities will be inserted here -->
+        </ul>
     </div>
-    <div class="tech">
-      <h2>Test 3</h2>
-      <i class="devicon-git-plain"></i>
-      <i class="devicon-gulp-plain colored"></i>
-      <i class="devicon-atom-original-wordmark"></i>
-      <p>Ranjan Test 2 hexagon kombucha, pitchfork four loko raclette intelligentsia master cleanse.
-        Vinyl XOXO lumbersexual</p>
-    </div>
-</div>
+    <script>
+        const vulnerabilities = {
+            "Injection Vulnerabilities": [
+                "SQL Injection",
+                "Cross-Site Scripting (XSS)",
+                "Cross-Site Request Forgery (CSRF)",
+                "Remote Code Execution (RCE)",
+                "Command Injection",
+                "XML Injection",
+                "LDAP Injection",
+                "XPath Injection",
+                "HTML Injection",
+                "Server-Side Includes (SSI) Injection",
+                "OS Command Injection",
+                "Blind SQL Injection",
+                "Server-Side Template Injection (SSTI)"
+            ],
+            "Broken Authentication and Session Management": [
+                "Credential Reuse",
+                "Cookie Theft",
+                "Insecure Authentication",
+                "Weak Password Storage",
+                "Password Cracking",
+                "Session Hijacking",
+                "Brute Force Attack",
+                "Session Fixation"
+            ],
+            "Sensitive Data Exposure": [
+                "Inadequate Encryption",
+                "Insecure Direct Object References (IDOR)",
+                "Data Leakage",
+                "Unencrypted Data Storage",
+                "Missing Security Headers",
+                "Insecure File Handling"
+            ],
+            "Security Misconfiguration": [
+                "Default Passwords",
+                "Directory Listing",
+                "Unprotected API Endpoints",
+                "Open Ports and Services",
+                "Improper Access Controls",
+                "Information Disclosure",
+                "Unpatched Software",
+                "Misconfigured CORS",
+                "HTTP Security Headers Misconfiguration"
+            ],
+            "XML-Related Vulnerabilities": [
+                "XML Bomb",
+                "XML Entity Expansion (XEE)",
+                "XML External Entity (XXE) Injection"
+            ],
+            "Broken Access Control": [
+                "Inadequate Authorization",
+                "Privilege Escalation",
+                "Insecure Direct Object References",
+                "Forceful Browsing",
+                "Missing Function-Level Access Control"
+            ],
+            "Insecure Deserialization": [
+                "Object Injection",
+                "Data Tampering",
+                "Remote Code Execution via Deserialization"
+            ],
+            "API Security Issues": [
+                "Inadequate Input Validation",
+                "Lack of Rate Limiting",
+                "API Key Exposure",
+                "Insecure API Endpoints"
+            ],
+            "Insecure Communication": [
+                "Man-in-the-Middle (MITM) Attack",
+                "Insufficient Transport Layer Security",
+                "Insecure SSL/TLS Configuration",
+                "Insecure Communication Protocols"
+            ],
+            "Client-Side Vulnerabilities": [
+                "HTML5 Security Issues",
+                "Clickjacking",
+                "Browser Cache Poisoning",
+                "Insecure Cross-Origin Communication",
+                "DOM-based XSS"
+            ],
+            "Denial of Service (DoS)": [
+                "Distributed Denial of Service",
+                "Application Layer DoS",
+                "Resource Exhaustion",
+                "Slowloris Attack",
+                "XML Denial of Service"
+            ],
+            "Other Web Vulnerabilities": [
+                "Server-Side Request Forgery (SSRF)",
+                "HTTP Parameter Pollution (HPP)",
+                "Insecure Redirects and Forwards",
+                "File Inclusion Vulnerabilities",
+                "Security Header Bypass",
+                "Clickjacking",
+                "Inadequate Session Timeout",
+                "Insufficient Logging and Monitoring",
+                "Business Logic Vulnerabilities",
+                "API Abuse"
+            ],
+            "Mobile Web Vulnerabilities": [
+                "Insecure Data Storage on Mobile Devices",
+                "Insecure Data Transmission on Mobile Devices",
+                "Insecure Mobile API Endpoints",
+                "Mobile App Reverse Engineering"
+            ],
+            "IoT Web Vulnerabilities": [
+                "Insecure IoT Device Management",
+                "Weak Authentication on IoT Devices",
+                "IoT Device Vulnerabilities"
+            ],
+            "Web of Things (WOT) Vulnerabilities": [
+                "IoT Data Privacy Issues",
+                "Unauthorized Access to Smart Homes"
+            ],
+            "Authentication Bypass": [
+                "Insecure 'Remember Me' Functionality",
+                "CAPTCHA Bypass"
+            ],
+            "Server-Side Request Forgery (SSRF)": [
+                "Blind SSR",
+                "Time-Based Blind SSRF"
+            ],
+            "Content Spoofing": [
+                "MIME Sniffing",
+                "X-Content-Type-Options Bypass",
+                "Content Security Policy (CSP) Bypass"
+            ],
+            "Business Logic Flaws": [
+                "Inconsistent Validation",
+                "Race Conditions",
+                "Order Processing Vulnerabilities",
+                "Price Manipulation",
+                "Account Enumeration",
+                "User-Based Flaws"
+            ],
+            "Zero-Day Vulnerabilities": [
+                "Unknown Vulnerabilities",
+                "Unpatched Vulnerabilities",
+                "Day-Zero Exploits"
+            ],
+            "Security Risks": [
+                "Cross-origin resource sharing (CORS)",
+                "HTTP request smuggling",
+                "Path traversal",
+                "Access control vulnerabilities",
+                "WebSockets",
+                "Web cache poisoning",
+                "HTTP Host header attacks",
+                "OAuth authentication",
+                "File upload vulnerabilities",
+                "JWT",
+                "Prototype pollution",
+                "GraphQL API vulnerabilities",
+                "Race conditions",
+                "NoSQL injection",
+                "API testing"
+            ]
+        };
+
+        function createVulnList() {
+            const vulnList = document.getElementById('vuln-list');
+            let vulnIndex = 0;
+            for (const category in vulnerabilities) {
+                // Create category heading and progress bar
+                const categoryItem = document.createElement('li');
+                categoryItem.classList.add('category');
+                categoryItem.textContent = category;
+                vulnList.appendChild(categoryItem);
+
+                const progressBarContainer = document.createElement('div');
+                progressBarContainer.classList.add('progress-container');
+                progressBarContainer.innerHTML = `
+                    <div class="progress-bar" id="progress-bar-${category.replace(/\s+/g, '-')}"></div>
+                `;
+                vulnList.appendChild(progressBarContainer);
+
+                // Create vulnerabilities list items
+                vulnerabilities[category].forEach(vuln => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <label for="vuln-${vulnIndex}">${vuln}</label>
+                        <input type="checkbox" id="vuln-${vulnIndex}" data-category="${category}" onchange="updateProgress()">
+                    `;
+                    vulnList.appendChild(listItem);
+                    vulnIndex++;
+                });
+            }
+        }
+
+        function updateProgress() {
+            const categories = Object.keys(vulnerabilities);
+            let totalChecked = 0;
+            let totalVulns = 0;
+
+            categories.forEach(category => {
+                const checkboxes = document.querySelectorAll(`input[data-category="${category}"]`);
+                const total = checkboxes.length;
+                const checked = document.querySelectorAll(`input[data-category="${category}"]:checked`).length;
+                const percentage = (checked / total) * 100;
+
+                totalChecked += checked;
+                totalVulns += total;
+
+                const progressBar = document.getElementById(`progress-bar-${category.replace(/\s+/g, '-')}`);
+                if (progressBar) {
+                    progressBar.style.width = percentage + '%';
+                }
+            });
+
+            const overallPercentage = (totalChecked / totalVulns) * 100;
+            document.getElementById('overall-progress-bar').style.width = overallPercentage + '%';
+            document.getElementById('overall-progress-percent').textContent = overallPercentage.toFixed(2) + '%';
+
+            if (overallPercentage === 100) {
+                alert('Congratulations! You have completed all vulnerabilities.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createVulnList();
+        });
+    </script>
+</body>
+</html>
